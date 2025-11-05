@@ -18,19 +18,19 @@ public class InputManager {
     private static final String[] MODELS = {"Audi", "BMV", "Ford", "Toyota", "Mercedes", "Honda",  "Volvo", "Scania", "Nissan"};
 
     /**
-     * Создает массив автомобилей вручную через ввод данных с консоли.
-     * @param length размер массива
-     * @return заполненный массив объектов Car
+     * Создает список автомобилей вручную через ввод данных с консоли.
+     * @param count количество автомобилей для создания
+     * @return список объектов Car
      */
-    public static Car[] createManualArray(int length) {
-        if (length <= 0) {
-            throw new IllegalArgumentException("Размер массива должен быть положительным числом: " + length);
+    public static List<Car> createManualList(int count) {
+        if (count <= 0) {
+            throw new IllegalArgumentException("Количество автомобилей должно быть положительным числом: " + count);
         }
 
-        Car[] cars = new Car[length];
+        List<Car> cars = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < count; i++) {
             System.out.printf("%n--- Введите данные для машины %d ---%n", (i + 1));
 
             try {
@@ -43,7 +43,8 @@ public class InputManager {
                 System.out.printf("Год выпуска (%d-%d): ", MIN_YEAR, MAX_YEAR);
                 int year = Integer.parseInt(sc.nextLine().trim());
 
-                cars[i] = new Car.Builder().setModel(model).setPower(power).setYear(year).build();
+                Car car = new Car.Builder().setModel(model).setPower(power).setYear(year).build();
+                cars.add(car);
 
             } catch (IllegalArgumentException  e) {
                 System.out.printf("Ошибка валидации: %s. Повторите ввод.%n", e.getMessage());
@@ -55,25 +56,26 @@ public class InputManager {
     }
 
     /**
-     * Генерирует массив автомобилей со случайными характеристиками.
-     * @param length размер массива
-     * @return заполненный массив объектов Car
+     * Генерирует список автомобилей со случайными характеристиками.
+     * @param count количество автомобилей для генерации
+     * @return список объектов Car
      */
-    public static Car[] createRandomArray(int length) {
-        if (length <= 0) {
-            throw new IllegalArgumentException("Размер массива должен быть положительным числом: " + length);
+    public static List<Car> createRandomList(int count) {
+        if (count <= 0) {
+            throw new IllegalArgumentException("Количество автомобилей должно быть положительным числом: " + count);
         }
 
-        Car[] cars = new Car[length];
+        List<Car> cars = new ArrayList<>();
         Random random = new Random();
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < count; i++) {
             try {
                 String model = MODELS[random.nextInt(MODELS.length)];
                 int power = random.nextInt(MIN_POWER, MAX_POWER);
                 int year = random.nextInt(MIN_YEAR, MAX_YEAR);
 
-                cars[i] = new Car.Builder().setModel(model).setPower(power).setYear(year).build();
+                Car car = new Car.Builder().setModel(model).setPower(power).setYear(year).build();
+                cars.add(car);
 
             } catch (IllegalArgumentException e) {
                 System.out.println("Ошибка генерации: " + e.getMessage());
@@ -84,12 +86,12 @@ public class InputManager {
     }
 
     /**
-     * Создает массив автомобилей, читая данные из файла.
+     * Создает список автомобилей, читая данные из файла.
      * Формат файла: Модель, Мощность, Год (каждая строка - один автомобиль)
      * @param filePath путь к файлу для чтения данных
-     * @return заполненный массив объектов Car
+     * @return список объектов Car
      */
-    public static Car[] createArrayFromFile(String filePath) {
+    public static List<Car> createListFromFile(String filePath) {
         List<Car> cars = new ArrayList<>();
 
         try (Scanner fileScanner = new Scanner(new File(filePath))) {
@@ -119,7 +121,7 @@ public class InputManager {
             System.out.println("Файл не найден: " + filePath);
         }
 
-        return cars.toArray(new Car[0]);
+        return cars;
     }
 
 }
