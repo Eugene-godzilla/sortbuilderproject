@@ -2,7 +2,7 @@ package com.project.Strategy;
 
 import com.project.model.Car;
 
-public class ModelComparator implements InsertionSortCarComparatorStrategy {
+public class ModelComparator implements CarComparatorStrategy {
 
     @Override
     public int compare(Car car1, Car car2) {
