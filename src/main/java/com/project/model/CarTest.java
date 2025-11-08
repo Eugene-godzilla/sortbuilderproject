@@ -5,15 +5,12 @@ import java.util.List;
 
 public class CarTest {
 
-    public static List<Car> getCars() {
+    public static void main(String[] args) {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car.Builder().setModel("BMW").setPower(250).setYear(2020).build());
         cars.add(new Car.Builder().setModel("Audi").setPower(200).setYear(2018).build());
         cars.add(new Car.Builder().setModel("Tesla").setPower(400).setYear(2022).build());
-        return cars;
-    }
-    public static void main(String[] args)  {
-        List<Car> cars = getCars();
+
         System.out.println("Before sort:");
         cars.forEach(System.out::println);
 
