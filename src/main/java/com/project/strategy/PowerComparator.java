@@ -1,4 +1,4 @@
-package com.project.Strategy;
+package com.project.strategy;
 
 import com.project.model.Car;
 

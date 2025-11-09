@@ -3,10 +3,10 @@ package com.project.mainapp;
 import com.project.model.Car;
 import com.project.io.InputManager;
 import com.project.io.OutputManager;
-import com.project.Strategy.ContextSort;
-import com.project.Strategy.ModelComparator;
-import com.project.Strategy.PowerComparator;
-import com.project.Strategy.YearComparator;
+import com.project.strategy.ContextSort;
+import com.project.strategy.ModelComparator;
+import com.project.strategy.PowerComparator;
+import com.project.strategy.YearComparator;
 
 import java.util.ArrayList;
 import java.util.List;
