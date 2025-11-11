@@ -1,13 +1,11 @@
 package com.project;
 
-import com.project.model.Car;
-import com.project.model.CarComparators;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.project.mainapp.Application;
+
 
 public class Main {
     public static void main(String[] args) {
-        new Application().run(); //инициация меню
+        new Application().run();
     }
 }
