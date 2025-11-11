@@ -1,0 +1,12 @@
+package com.project.strategy;
+
+import com.project.model.Car;
+
+public class YearComparator implements CarComparatorStrategy {
+
+    @Override
+    public int compare(Car car1, Car car2) {
+
+        return Integer.compare(car1.getYear(), car2.getYear());
+    }
+}
